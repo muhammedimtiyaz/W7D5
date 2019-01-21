@@ -4,10 +4,10 @@ class Api::SessionsController < ApplicationController
     # debugger
     if @user
       login(@user)
-      debugger
+      # debugger
       render "/api/users/show"
     else
-      render json: ["Invalid credentials"]
+      render json: ["Invalid credentials"], status: 422
     end
   end
 
@@ -16,7 +16,7 @@ class Api::SessionsController < ApplicationController
       logout
       render json: {}
     else
-      render json: ["Nobody is signed in"]
+      render json: ["Nobody is signed in"], status: 422
     end
   end
 end
